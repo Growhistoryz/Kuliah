@@ -1,0 +1,95 @@
+.jumbotron {
+    padding-top: 2rem;
+    background-color: #eae0c8;
+}
+
+h1 {
+    font-family: Lora;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #000000;
+   
+
+}
+
+.tentang-saya {
+    margin-bottom: 20px; 
+}
+
+svg {
+    margin-top: 10px; 
+}
+
+#gambarnya{
+    background-color: #eae0c8;
+    
+}
+
+#kontak{
+    padding-top: 2rem;
+    margin-bottom: 20px; 
+}
+
+
+h2 {
+    font-family: satisfy;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: rgb(9, 80, 124);
+    margin-bottom: 20px;
+    
+
+}
+
+
+  body {
+    padding-top: 40px;
+    
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+
+
+p {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+ul{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    background-color: #536878; 
+    color: white; 
+    text-align: center;
+    padding: 20px 0; 
+    margin-top: 50px; 
+  }
+  
+  .social-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .social-links a.ig:hover {
+    color: #E4405F;
+  }
+  
+  .social-links a.yt:hover {
+    color: #FF0000; 
+  }
+  
+
+
+
+

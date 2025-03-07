@@ -1,0 +1,55 @@
+body {
+    background-color: #faebc4;
+}
+
+.jumbotron {
+    background: url('anime-food-bg.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+}
+
+.jumbotron img {
+    border: 5px solid white;
+}
+
+h2 {
+    color: rgb(255, 58, 4);
+    margin-top: 20px;
+}
+
+h1 {
+    color: #000000;
+    margin-top: 20px;
+    font-style: Montserrat;
+}
+h3{
+    color: rgb(255, 179, 0);
+    margin-top: 20px;
+}
+
+h4 {
+    color: #000000;
+    margin-top: 20px;
+    font-style: Montserrat;
+}
+
+p {
+   
+    margin-top: 20px;
+    font-style: Playfair Display;
+    font-size: 20px;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #536878;
+    color: white;
+    padding: 10px;
+}
