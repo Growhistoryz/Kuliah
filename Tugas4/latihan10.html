@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Belajar Javascript Platform</title>
+  </head>
+  <body>
+    <h1>Belajar JavaScript</h1>
+    <!-- Sama seperti sebelumnya bikin tombol kalau di klik manggil method perulangan kalau ini -->
+    <button onclick=" perulangan()"> Tombol</button>
+   
+<div id = "hasil"> </div> 
+
+<script>
+  // method perulangan 
+    function perulangan() {
+        var text = "";
+        var x;
+        for (x = 0; x < 20 ; x++){ // inisialsasi var x isinya 0. stop sampai angka 20.setiap perulangan di tambah 1
+            text += "Angka" + x +"<br>";
+        }
+        document.getElementById("hasil").innerHTML = text;
+    }
+</script>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-field">
+                <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+            </div>
+        
+            <div class="input-field">
+                <input type="text" id="psw" placeholder="Enter Password" name="psw" required>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Login</button>
+                <button type="button" onclick="resetForm()">Reset</button>
+            </div>
+
+            <div class="validation-section">
+                <h3>Username Harus ada ini:</h3>
+                <p id="upanjang" class="invalid">Minimum nya ada 8 karakter</p>
+                <p id="uNom" class="invalid">> Harus ada Angkanya</p>
+                <p id="kecil" class="invalid">> Harus ada Huruf kecil</p>
+                <p id="kapital" class="invalid">> Harus ada Huruf Besar</p>
+                <p id="uNoSpecial" class="invalid">> Tidak boleh karakter khusus</p>
+            </div>
+
+            <div class="validation-section">
+                <h3>Passwordnya Harus ada ini:</h3>
+                <p id="pPanjang" class="invalid">Minimum nya ada 6-10 karakter</p>
+                <p id="pkecil" class="invalid">> Harus ada Huruf kecil</p>
+                <p id="pKap" class="invalid">> Harus ada Huruf Besar</p>
+                <p id="pSpecial" class="invalid">> Harus ada karakter bebas cth !?dll</p>
+                <p id="pBukanYanSam" class="invalid">> Jangan sama dengan Username</p>
+            </div>
+        </form>
+    </div>
+
+   <script>
+        // Get form elements
+        var form = document.getElementById("loginForm");
+        var username = document.getElementById("uname");
+        var password = document.getElementById("psw");
+        
+        // Get validation elements
+        var upanjang = document.getElementById("upanjang");
+        var uNom = document.getElementById("uNom");
+        var kecil = document.getElementById("kecil");
+        var kapital = document.getElementById("kapital");
+        var uNoSpecial = document.getElementById("uNoSpecial");
+        
+        var pPanjang = document.getElementById("pPanjang");
+        var pkecil = document.getElementById("pkecil");
+        var pKap = document.getElementById("pKap");
+        var pSpecial = document.getElementById("pSpecial");
+        var pBukanYanSam = document.getElementById("pBukanYanSam");
+       
+        // Reset form function
+        function resetForm() {
+            document.getElementById("loginForm").reset();
+            
+            // Reset all validation indicators back to invalid state
+            var validationElements = [
+                "upanjang", "uNom", "kecil", "kapital", "uNoSpecial",
+                "pPanjang", "pkecil", "pKap", "pSpecial", "pBukanYanSam"
+            ];
+            
+            validationElements.forEach(function(elementId) {
+                var element = document.getElementById(elementId);
+                if (element) {
+                    element.classList.remove("valid");
+                    element.classList.add("invalid");
+                }
+            });
+        }
+        
+        // Helper function to validate password != username
+        function validatePasswordUsername() {
+            if(password.value !== username.value && password.value !== "") {
+                pBukanYanSam.classList.remove("invalid");
+                pBukanYanSam.classList.add("valid");
+            } else {
+                pBukanYanSam.classList.remove("valid");
+                pBukanYanSam.classList.add("invalid");
+            }
+        }
+       
+        // Username validation on keyup
+        username.onkeyup = function() {
+            // Validate length (exactly 8 characters)
+            if(username.value.length === 8) {
+                upanjang.classList.remove("invalid");
+                upanjang.classList.add("valid");
+            } else {
+                upanjang.classList.remove("valid");
+                upanjang.classList.add("invalid");
+            }
+            
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if(username.value.match(lowerCaseLetters)) {
+                kecil.classList.remove("invalid");
+                kecil.classList.add("valid");
+            } else {
+                kecil.classList.remove("valid");
+                kecil.classList.add("invalid");
+            }
+            
+            // Validate uppercase letters
+            var upperCaseLetters = /[A-Z]/g;
+            if(username.value.match(upperCaseLetters)) {
+                kapital.classList.remove("invalid");
+                kapital.classList.add("valid");
+            } else {
+                kapital.classList.remove("valid");
+                kapital.classList.add("invalid");
+            }
+            
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if(username.value.match(numbers)) {
+                uNom.classList.remove("invalid");
+                uNom.classList.add("valid");
+            } else {
+                uNom.classList.remove("valid");
+                uNom.classList.add("invalid");
+            }
+            
+            // Validate no special characters
+            var specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            if(!username.value.match(specialChars)) {
+                uNoSpecial.classList.remove("invalid");
+                uNoSpecial.classList.add("valid");
+            } else {
+                uNoSpecial.classList.remove("valid");
+                uNoSpecial.classList.add("invalid");
+            }
+
+            
+            
+            validatePasswordUsername();
+        }
+        
+        // Password validation on keyup
+        password.onkeyup = function() {
+            // Validate length (6-10 characters)
+            if(password.value.length >= 6 && password.value.length <= 10) {
+                pPanjang.classList.remove("invalid");
+                pPanjang.classList.add("valid");
+            } else {
+                pPanjang.classList.remove("valid");
+                pPanjang.classList.add("invalid");
+            }
+            
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if(password.value.match(lowerCaseLetters)) {
+                pkecil.classList.remove("invalid");
+                pkecil.classList.add("valid");
+            } else {
+                pkecil.classList.remove("valid");
+                pkecil.classList.add("invalid");
+            }
+            
+            // Validate uppercase letters
+            var upperCaseLetters = /[A-Z]/g;
+            if(password.value.match(upperCaseLetters)) {
+                pKap.classList.remove("invalid");
+                pKap.classList.add("valid");
+            } else {
+                pKap.classList.remove("valid");
+                pKap.classList.add("invalid");
+            }
+            
+            // Validate special characters
+            var spesialKarak = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            if(password.value.match(spesialKarak)) {
+                pSpecial.classList.remove("invalid");
+                pSpecial.classList.add("valid");
+            } else {
+                pSpecial.classList.remove("valid");
+                pSpecial.classList.add("invalid");
+            }
+            
+            validatePasswordUsername();
+        }
+        
+        // Form submission validation
+        form.onsubmit = function(event) {
+            event.preventDefault(); 
+            
+            // Check username requirements
+            var validUsername = 
+                username.value.length === 8 && 
+                /[a-z]/.test(username.value) && 
+                /[A-Z]/.test(username.value) && 
+                /[0-9]/.test(username.value) &&
+                !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(username.value);
+            
+            // Check password requirements
+            var validPassword = 
+                password.value.length >= 6 && 
+                password.value.length <= 10 && 
+                /[a-z]/.test(password.value) && 
+                /[A-Z]/.test(password.value) && 
+                /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password.value) && 
+                password.value !== username.value;
+            
+            // If validation fails, show error
+            if (!validUsername || !validPassword) {
+                alert("Password salah");
+                return false;
+            }
+            
+            // If validation passes, redirect to YouTube
+            alert("Login berhasil! Membuka YouTube...");
+            window.location.href = "https://www.youtube.com/watch?v=ZDxGMTO7O3g&t=1989s";
+            return false;
+        }
+    </script>
+
+</body>
+</html>

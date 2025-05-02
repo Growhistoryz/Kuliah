@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <h1>Kalkulator Michael</h1>
+    <form>
+        <!-- Untuk kalimat  -->
+        <label for="angka1">Bilangan 1</label>
+        <input type="number" id="angka1"><br>
+
+        <label for="angka2">Bilangan 2</label>
+        <input type="number" id="angka2"><br>
+
+        <button type="button" onclick="hitung('tambah')">Tambah</button>
+        <button type="button" onclick="hitung('kurang')">Kurang</button><br>
+
+        <label for="hasil">Hasil</label>
+        <input type="text" id="hasil">
+    </form>
+    <script>
+        function hitung(operator) {
+            var angka1 = parseFloat(document.getElementById("angka1").value);
+            var angka2 = parseFloat(document.getElementById("angka2").value);
+            var hasil;
+
+            // Ini jelas buat rumus
+            if (operator == "tambah") {
+                hasil = angka1 + angka2;
+            } else if (operator == "kurang") {
+                hasil = angka1 - angka2;
+            }
+            // Untuk Mencetak hasil angka 1 dan angka 2
+            document.getElementById("hasil").value = hasil;
+        }
+    </script>
+
+</body>
+</html>

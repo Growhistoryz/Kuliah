@@ -1,0 +1,146 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        .Kalkulatornya {
+            width: 300px;
+            background-color: #000000;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .hasilKal {
+            width: 100%;
+            height: 50px;
+            text-align: right;
+            font-size: 1.5rem;
+            font-display: re;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            color: #f2f2f2;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            font-size: 1.5rem;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            color: rgb(0, 0, 0)
+        }
+
+    </style>
+    </head>
+<body>
+    <div class="Kalkulatornya">
+        <input type="text" id="hasilKal" class="hasilKal" disabled>
+        <div class="buttons">
+            <button class="button" onclick="appendNumber('1')">1</button>
+            <button class="button" onclick="appendNumber('2')">2</button>
+            <button class="button" onclick="appendNumber('3')">3</button>
+            <button class="button operator" onclick="appendOperation('+')">+</button>
+
+            <button class="button" onclick="appendNumber('4')">4</button>
+            <button class="button" onclick="appendNumber('5')">5</button>
+            <button class="button" onclick="appendNumber('6')">6</button>
+            <button class="button operator" onclick="appendOperation('-')">-</button> 
+
+            <button class="button" onclick="appendNumber('7')">7</button>
+            <button class="button" onclick="appendNumber('8')">8</button>
+            <button class="button" onclick="appendNumber('9')">9</button>
+            <button class="button operator" onclick="appendOperation('*')">*</button>
+            
+             <button class="button clear" onclick="clearDisplay()">C</button>
+             <button class="button" onclick="appendNumber('0')">0</button>
+             <button class="button equal" onclick="calculate()">=</button>
+             <button class="button operator" onclick="appendOperation('/')">/</button>
+            
+
+           
+        </div>
+    </div>
+    <script>
+
+       
+        let inputanSek = '';
+        let operasiSek = '';
+        let inputanSem = '';
+
+function appendNumber(number) {
+    inputanSek += number;
+    document.getElementById('hasilKal').value = `${inputanSem} ${operasiSek} ${inputanSek}`;
+}
+
+
+function appendOperation(operation) {
+    if (inputanSek === '') return;
+    if (inputanSem !== '') {
+        calculate(); 
+    }
+    operasiSek = operation;
+    inputanSem = inputanSek;
+    inputanSek = '';
+    document.getElementById('hasilKal').value = `${inputanSem} ${operasiSek}`;
+}
+
+function calculate() {
+    if (inputanSem === '' || inputanSek === '') return;
+    let result;
+    let prev = parseFloat(inputanSem);
+    let current = parseFloat(inputanSek);
+
+    switch (operasiSek) {
+        case '+':
+            result = prev + current;
+            break;
+        case '-':
+            result = prev - current;
+            break;
+        case '*':
+            result = prev * current;
+            break;
+        case '/':
+            if (current === 0) {
+                alert("Gak bisa bagi 0 ");
+                return;
+            }
+            result = prev / current;
+            break;
+        default:
+            return;
+    }
+
+    inputanSek = result.toString();
+    operasiSek = '';
+    inputanSem = '';
+    document.getElementById('hasilKal').value = inputanSek;
+}
+
+function clearDisplay() {
+    inputanSek = '';
+    inputanSem = '';
+    operasiSek = '';
+    document.getElementById('hasilKal').value = '';
+}
+
+    </script>
+
+</body>
+</html>

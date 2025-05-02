@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Belajar Javascript Platform</title>
+</head>
+<body>
+    <!-- Membuat Elemen id -->
+    <h1>Belajar JavaScript</h1>
+    <div id = "hasilangka"> </div>
+    <div id = "hasilkalimat"> </div>
+    <div id = "hasilhewan"> </div>
+    <div id = "hasilmanusia"> </div>
+    
+<script>
+    // di sini  kita belajar arrray dan inisialisasi
+var angka = 80; 
+var kalimat = "ayo belajar javascript";
+var hewan =["kambing","Bebek","Ayam"]
+var manusia = {
+    nama : "Budi",
+    alamat : "Yogyakarta",
+    umur : 20,
+    pekerjaan : "Mahasiswa"
+};
+
+document.getElementById("hasilangka").innerHTML = angka;
+document.getElementById("hasilkalimat").innerHTML = kalimat;
+document.getElementById("hasilhewan").innerHTML = hewan[1]; // berarti dapetnya bebek karena kambing itu 0 di mulai 0
+document.getElementById("hasilmanusia").innerHTML = manusia.nama + " Tinggal di " + manusia.alamat + " Dia sekarang berumur " + manusia.umur + " dan bekerja sebagai " + manusia.pekerjaan;
+
+</script>    
+</body>
+</html>
